@@ -19,27 +19,28 @@ const NotesApp = () => {
     setNotes(notes.filter(note => { return note.title !== currentNote.title }));
   }
 
-  return (<div>
-    <h3>Notes</h3>
-    {notes.map(note => {
-      return (
-        <ul key={note.title}>
-          <li >
-            <h4>{note.title}</h4>
-            <p>{note.body}</p>
-          </li>
-          <button onClick={(e) => { e.preventDefault(); removeNote(note) }}>x</button>
-        </ul>
-      )
-    })}
-    <form onSubmit={addNotes}>
-      <input type="text" onChange={(e) => { setTitle(e.target.value) }} value={title}></input>
-      <br />
-      <textarea type="textarea" onChange={(e) => { setBody(e.target.value) }} value={body}></textarea>
-      <br />
-      <button>Add To form</button>
-    </form>
-  </div>)
+  return (
+    <div>
+      <h3>Notes</h3>
+      {notes.map(note => {
+        return (
+          <ul key={note.title}>
+            <li >
+              <h4>{note.title}</h4>
+              <p>{note.body}</p>
+            </li>
+            <button onClick={(e) => { e.preventDefault(); removeNote(note) }}>x</button>
+          </ul>
+        )
+      })}
+      <form onSubmit={addNotes}>
+        <input type="text" onChange={(e) => { setTitle(e.target.value) }} value={title}></input>
+        <br />
+        <textarea type="textarea" onChange={(e) => { setBody(e.target.value) }} value={body}></textarea>
+        <br />
+        <button>Add To form</button>
+      </form>
+    </div>)
 }
 
 
