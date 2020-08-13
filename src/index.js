@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
@@ -7,6 +7,14 @@ const NotesApp = () => {
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+
+  useEffect(() => {
+    setNotes(JSON.parse(localStorage.getItem("notes")));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [notes])
 
   const addNotes = e => {
     e.preventDefault();
