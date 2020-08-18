@@ -9,7 +9,11 @@ const NotesApp = () => {
   const [body, setBody] = useState('');
 
   useEffect(() => {
-    setNotes(JSON.parse(localStorage.getItem("notes")));
+    const notesData = JSON.parse(localStorage.getItem('notes'))
+
+    if (notesData) {
+        setNotes(notesData)
+    }
   }, []);
 
   useEffect(() => {
